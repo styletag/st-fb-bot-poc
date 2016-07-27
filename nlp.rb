@@ -1,7 +1,7 @@
 require 'wit'
 require_relative 'load_configs'
 
-def do_nlp
+def do_nlp(message)
   client = Wit.new(access_token: @wit_token)
   puts "Doing Natural Language Processing..."
   rsp = client.message(message)
