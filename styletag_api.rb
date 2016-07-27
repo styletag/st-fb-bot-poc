@@ -5,8 +5,17 @@ require 'active_support/core_ext'
 
 def get_products(cat,color,price)
   uri = URI('http://mesabackend-yantra-834313990.ap-southeast-1.elb.amazonaws.com/v1/filter/apply_product_filters')
-
-  request_data = {:data => {:path => "/women", :options => {:product_type => [cat], :color => [color], :price => {:min => "0",:max => price}}}}
+  
+  price = "10000" if price.blank?
+  options = {}
+  options[:product_type] = [cat] unless cat.blank?
+  options[:color] = [color] unless color.blank?
+  options[:price] = {}
+  options[:price][:min] = "0"
+  options[:price][:max] = price
+  
+  request_data = {:data => {:path => "/women", :options => options}}
+  #request_data = {:data => {:path => "/women", :options => {:product_type => [cat], :color => [color], :price => {:min => "0",:max => price}}}}
   #request_data = {:data => {:path => "/women/ethnic-wear", :options => {:product_type => ["kurtas"], :color => ["red"], :price => {:min => "0",:max => "1200"}}}}
 
   client = HTTPClient.new
