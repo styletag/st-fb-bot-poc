@@ -1,5 +1,6 @@
 require_relative 'load_configs'
 require_relative 'nlp'
+require_relative 'styletag_api'
 
 
 Facebook::Messenger.configure do |config|
