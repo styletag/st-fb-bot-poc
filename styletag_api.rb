@@ -39,12 +39,7 @@ def get_products(cat,color,price)
         type:"web_url",
         url:"http://www.styletag.com"+p["path"],
         title:"View On Styletag.com"
-      },
-      {
-        type:"postback",
-        title:"Add to Wishlist",
-        payload:"USER_DEFINED_PAYLOAD"
-      }              
+      }          
     ]
   }
   end
